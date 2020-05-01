@@ -14,4 +14,17 @@ const photoSchema = new mongoose.Schema({
 
 const Photo = mongoose.model('Photo', photoSchema);
 
-module.exports = Photo;
+const getAllPhotos = (id, callback) => {
+  Photo.find({ listing_id: id }, (err, results) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+
+module.exports = {
+  Photo,
+  getAllPhotos,
+};
