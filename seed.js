@@ -2,10 +2,11 @@
 const faker = require('faker');
 
 const db = require('./database/index.js');
-const Photo = require('./database/Model/Photo.js');
+const Model = require('./database/Model/Photo.js');
 
 const randomNumberGenerator = () => {
-  Math.floor(Math.random() * Math.floor(250));
+  const randomNumber = Math.floor(Math.random() * Math.floor(250));
+  return randomNumber;
 };
 
 let count = 0;
@@ -17,11 +18,11 @@ for (let i = 0; i < 100; i += 1) {
   const randomIndex4 = randomNumberGenerator();
   const randomIndex5 = randomNumberGenerator();
 
-  Photo.exists({ listing_id: i }, (err, res) => {
+  Model.Photo.exists({ listing_id: i }, (err, res) => {
     if (err) {
       console.log(err);
     } else if (!res) {
-      Photo.create({
+      Model.Photo.create({
         listing_id: i,
         liked: faker.random.boolean(),
         photos: [
