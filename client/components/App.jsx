@@ -8,7 +8,7 @@ class App extends React.Component {
 
     this.state = {
       liked: false,
-      photos: []
+      photos: [],
     };
   }
 
@@ -16,7 +16,6 @@ class App extends React.Component {
     const listingId = 1;
     axios.get(`/${listingId}`)
       .then(({ data }) => {
-        console.log(data[0]);
         this.setState({
           liked: data[0].liked,
           photos: data[0].photos,
@@ -28,8 +27,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { photos } = this.state;
-    const { liked } = this.state;
+    const { photos, liked } = this.state;
     return (
       <div>
         {liked}
