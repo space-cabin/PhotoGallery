@@ -20,11 +20,13 @@ app.get('/:listing_id', (req, res) => {
       res.send(results);
     }
   });
-})
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening at ${PORT}...`);
 });
+
+module.exports = app;
 
 // Uncomment to download random pics
 // const autoDownload = (count) => {
