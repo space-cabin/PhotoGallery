@@ -2,10 +2,11 @@
 const faker = require('faker');
 
 const db = require('./database/index.js');
-const Photo = require('./database/Model/Photo.js');
+const { Photo } = require('./database/Model/Photo.js');
 
 const randomNumberGenerator = () => {
-  Math.floor(Math.random() * Math.floor(250));
+  const randomNumber = Math.floor(Math.random() * Math.floor(250));
+  return randomNumber;
 };
 
 let count = 0;
