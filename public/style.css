@@ -1,0 +1,57 @@
+body {
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+#app {
+  padding-left: 80px;
+  padding-right: 80px;
+  display: block;
+  box-sizing: border-box;
+  text-align: -webkit-center;
+}
+
+.gallery {
+  display: flex;
+  max-width: 1280px;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.left-half {
+  float: left;
+  width: 50%;
+  height: 100%;
+  padding-right: 2px;
+ }
+
+.right-half {
+  display: flex;
+  padding: 5px;
+  width: 50%;
+}
+
+.firstcolumn {
+  display: flex;
+}
+
+.secondcolumn, .thirdcolumn {
+  width: 50%;
+  height: 50%;
+}
+
+.secondcolumn {
+  padding-right: 2px;
+}
+
+.photo, img{ 
+  height: 100%;
+  width: 100%;
+  padding-bottom: 2px;
+  vertical-align: top;
+}
+
+.photo:hover {
+  filter: grayscale(100%);
+  transition: 1s;
+}
