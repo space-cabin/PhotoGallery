@@ -27,12 +27,37 @@ class App extends React.Component {
   }
 
   render() {
-    const { photos, liked } = this.state;
+    const { photos } = this.state;
+    if (photos.length > 0) {
+      return (
+        <div className="gallery">
+          <div className="container">
+            <div className="round-corner">
+              <div className="left-half">
+                <div className="firstcolumn">
+                  <Photo className="photo photo-0" photo={photos[0]} />
+                </div>
+              </div>
+              <div className="right-half">
+                <div className="secondcolumn">
+                  <Photo className="photo photo-1" photo={photos[1]} />
+                  <div className="border"></div>
+                  <Photo className="photo photo-2" photo={photos[2]} />
+                </div>
+                <div className="thirdcolumn">
+                  <Photo className="photo photo-3" photo={photos[3]} />
+                  <div className="border"></div>
+                  <Photo className="photo photo-4" photo={photos[4]} />
+                  <button className="show-all">Show all photos</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
     return (
-      <div>
-        {liked}
-        {photos.map((photo) => <Photo key={photo.photo_id} photo={photo} />)}
-      </div>
+      <div className="gallery"></div>
     );
   }
 }
