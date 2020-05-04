@@ -1,13 +1,13 @@
 import React from 'react';
 
-const photo = ({ photo }) => {
+const photo = (props) => {
   const style = {
-    backgroundImage: `url(${photo.url})`
+    backgroundImage: `url(${props.photo.url})`
   };
 
   return (
-    <div className="photo" style={style}>
- 
+    <div className={props.className} style={style}>
+
     </div>
   );
 };

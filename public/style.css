@@ -58,11 +58,19 @@ body {
   width: 100%;
 }
 
-.secondcolumn .photo, .thirdcolumn .photo {
-  
+.photo-0 {
+  border-radius: 12px 0 0 12px;
 }
 
-.photo{
+.photo-3 {
+  border-radius: 0 12px 0 0;
+}
+
+.photo-4 {
+  border-radius: 0 0 12px 0;
+}
+
+.photo {
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: 90rem;

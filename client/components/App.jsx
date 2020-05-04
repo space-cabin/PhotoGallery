@@ -35,19 +35,19 @@ class App extends React.Component {
             <div className="round-corner">
               <div className="left-half">
                 <div className="firstcolumn">
-                  <Photo className="photo-0" photo={photos[0]} />
+                  <Photo className="photo photo-0" photo={photos[0]} />
                 </div>
               </div>
               <div className="right-half">
                 <div className="secondcolumn">
-                  <Photo className="photo-1" photo={photos[1]} />
+                  <Photo className="photo photo-1" photo={photos[1]} />
                   <div className="border"></div>
-                  <Photo className="photo-2" photo={photos[2]} />
+                  <Photo className="photo photo-2" photo={photos[2]} />
                 </div>
                 <div className="thirdcolumn">
-                  <Photo className="photo-3" photo={photos[3]} />
+                  <Photo className="photo photo-3" photo={photos[3]} />
                   <div className="border"></div>
-                  <Photo className="photo-" photo={photos[4]} />
+                  <Photo className="photo photo-4" photo={photos[4]} />
                   <button className="show-all">Show all photos</button>
                 </div>
               </div>
