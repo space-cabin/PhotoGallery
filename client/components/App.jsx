@@ -31,19 +31,26 @@ class App extends React.Component {
     if (photos.length > 0) {
       return (
         <div className="gallery">
-          <div className="left-half">
-            <div className="firstcolumn">
-              <Photo photo={photos[0]} />
-            </div>
-          </div>
-          <div className="right-half">
-            <div className="secondcolumn">
-              <Photo photo={photos[1]} />
-              <Photo photo={photos[2]} />
-            </div>
-            <div className="thirdcolumn">
-              <Photo photo={photos[3]} />
-              <Photo photo={photos[4]} />
+          <div className="container">
+            <div className="round-corner">
+              <div className="left-half">
+                <div className="firstcolumn">
+                  <Photo className="photo-0" photo={photos[0]} />
+                </div>
+              </div>
+              <div className="right-half">
+                <div className="secondcolumn">
+                  <Photo className="photo-1" photo={photos[1]} />
+                  <div className="border"></div>
+                  <Photo className="photo-2" photo={photos[2]} />
+                </div>
+                <div className="thirdcolumn">
+                  <Photo className="photo-3" photo={photos[3]} />
+                  <div className="border"></div>
+                  <Photo className="photo-" photo={photos[4]} />
+                  <button className="show-all">Show all photos</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -52,14 +59,6 @@ class App extends React.Component {
     return (
       <div className="gallery"></div>
     );
-
-    // return (
-    //   <div className="gallery">
-    //     {liked}
-    //     {console.log(photos)}
-    //     {photos.map((photo, idx) => <Photo key={photo.photo_id} index={idx} photo={photo} />)}
-    //   </div>
-    // );
   }
 }
 
