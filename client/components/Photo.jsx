@@ -1,15 +1,29 @@
 import React from 'react';
 
-const photo = (props) => {
-  const style = {
-    backgroundImage: `url(${props.photo.url})`
-  };
+class Photo extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className={props.className} style={style}>
+    this.state = {
 
-    </div>
-  );
-};
+    };
 
-export default photo;
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick({ target }) {
+    this.props.handleClick(target.id);
+  }
+
+  render() {
+    const { photo, className, index } = this.props;
+    const style = {
+      backgroundImage: `url(${photo.url})`,
+    };
+    return (
+      <div className={className} style={style} id={index} onClick={this.handleClick} />
+    );
+  }
+}
+
+export default Photo;
