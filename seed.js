@@ -4,19 +4,27 @@ const faker = require('faker');
 const db = require('./database/index.js');
 const { Photo } = require('./database/Model/Photo.js');
 
-const randomNumberGenerator = () => {
-  const randomNumber = Math.floor(Math.random() * Math.floor(250));
-  return randomNumber;
+const randomNumberGenerator = (min, max) => {
+  const minVal = Math.ceil(min);
+  const maxVal = Math.floor(max);
+  return Math.floor(Math.random() * (maxVal - minVal)) + minVal;
 };
 
 let count = 0;
 
 for (let i = 0; i < 100; i += 1) {
-  const randomIndex1 = randomNumberGenerator();
-  const randomIndex2 = randomNumberGenerator();
-  const randomIndex3 = randomNumberGenerator();
-  const randomIndex4 = randomNumberGenerator();
-  const randomIndex5 = randomNumberGenerator();
+  const randomNumber = randomNumberGenerator(6, 15);
+
+  const photos = [];
+  for (let j = 0; j < randomNumber; j += 1) {
+    const randomIndex = randomNumberGenerator(0, 300);
+    const photo = {
+      photo_id: randomIndex,
+      url: `https://fec-airbnb-photos.s3-us-west-1.amazonaws.com/${randomIndex}.jpg`,
+      description: faker.lorem.sentence(),
+    };
+    photos.push(photo);
+  }
 
   Photo.exists({ listing_id: i }, (err, res) => {
     if (err) {
@@ -25,33 +33,7 @@ for (let i = 0; i < 100; i += 1) {
       Photo.create({
         listing_id: i,
         liked: faker.random.boolean(),
-        photos: [
-          {
-            photo_id: randomIndex1,
-            url: `https://fec-airbnb-photos.s3-us-west-1.amazonaws.com/${randomIndex1}.jpg`,
-            description: faker.lorem.sentence(),
-          },
-          {
-            photo_id: randomIndex2,
-            url: `https://fec-airbnb-photos.s3-us-west-1.amazonaws.com/${randomIndex2}.jpg`,
-            description: faker.lorem.sentence(),
-          },
-          {
-            photo_id: randomIndex3,
-            url: `https://fec-airbnb-photos.s3-us-west-1.amazonaws.com/${randomIndex3}.jpg`,
-            description: faker.lorem.sentence(),
-          },
-          {
-            photo_id: randomIndex4,
-            url: `https://fec-airbnb-photos.s3-us-west-1.amazonaws.com/${randomIndex4}.jpg`,
-            description: faker.lorem.sentence(),
-          },
-          {
-            photo_id: randomIndex5,
-            url: `https://fec-airbnb-photos.s3-us-west-1.amazonaws.com/${randomIndex5}.jpg`,
-            description: faker.lorem.sentence(),
-          },
-        ],
+        photos,
       }, (error) => {
         if (error) {
           console.log(error);
@@ -74,7 +56,3 @@ for (let i = 0; i < 100; i += 1) {
     }
   });
 }
-
-// const min = Math.ceil(5);
-// const max = Math.floor(10);
-// const numberofPhotos = Math.floor(Math.random() * (max - min + 1)) + min;

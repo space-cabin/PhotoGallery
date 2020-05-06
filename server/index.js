@@ -1,17 +1,16 @@
 const express = require('express');
 const axios = require('axios');
 const fs = require('fs');
-const path = require('path');
 const db = require('../database/index.js');
 const Photo = require('../database/Model/Photo.js');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static('public'));
+app.use('/:listing_id', express.static('public'));
 app.use(express.json());
 
-app.get('/:listing_id', (req, res) => {
+app.get('/list/:listing_id', (req, res) => {
   const id = req.params.listing_id;
   Photo.getAllPhotos(id, (err, results) => {
     if (err) {
@@ -32,7 +31,7 @@ module.exports = app;
 // const autoDownload = (count) => {
 //   axios({
 //     method: 'GET',
-//     url: 'https://loremflickr.com/1920/1080/room,kitchen',
+//     url: 'https://loremflickr.com/1920/1080/hotel,room',
 //     responseType: 'stream',
 //   })
 //     .then((response) => {
@@ -40,6 +39,6 @@ module.exports = app;
 //     });
 // };
 
-// for (let i = 102; i < 250; i += 1) {
+// for (let i = 0; i < 250; i += 1) {
 //   autoDownload(i);
 // }
