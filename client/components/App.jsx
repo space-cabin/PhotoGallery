@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+
 import Photo from './Photo';
 import Gallery from './Gallery';
 
@@ -21,17 +22,25 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const listingId = 25;
-    axios.get(`/${listingId}`)
-      .then(({ data }) => {
-        this.setState({
-          liked: data[0].liked,
-          photos: data[0].photos,
+    let listingId;
+    if (window.location.pathname === '/') {
+      listingId = 0;
+    } else {
+      listingId = window.location.pathname.slice(1);
+      listingId = listingId.slice(0, listingId.length - 1);
+    }
+    if (Number(listingId) !== 'NaN') {
+      axios.get(`/list/${listingId}`)
+        .then(({ data }) => {
+          this.setState({
+            liked: data[0].liked,
+            photos: data[0].photos,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
         });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    }
   }
 
   handleClick(target) {
@@ -57,9 +66,8 @@ class App extends React.Component {
   }
 
   toggleLike() {
-    let value;
-    this.state.liked === 0 ? value = 1 : value = 0;
-    this.setState({ liked: value });
+    const { liked } = this.state;
+    this.setState({ liked: !liked });
   }
 
   render() {
@@ -69,18 +77,24 @@ class App extends React.Component {
     if (photos.length > 0 && !galleryView) {
       return (
         <div className="photo-gallery">
-          <div className="liked" id="like-btn" onClick={this.toggleLike}>
-            {liked ? (
-              <div className="liked-container">
-                <i className="fas fa-heart" />
-                <p>Save</p>
-              </div>
-            ) : (
-              <div className="liked-container">
-                <i className="far fa-heart" />
-                <p>Save</p>
-              </div>
-            )}
+          <div className="main-header">
+            <div className="share-container">
+              <i className="fas fa-external-link-alt" />
+              <p>Share</p>
+            </div>
+            <div className="liked" id="like-btn" onClick={this.toggleLike}>
+              {liked ? (
+                <div className="liked-container">
+                  <i className="fas fa-heart" />
+                  <p>Save</p>
+                </div>
+              ) : (
+                <div className="liked-container">
+                  <i className="far fa-heart" />
+                  <p>Save</p>
+                </div>
+              )}
+            </div>
           </div>
           <div className="gallery">
             <div className="container">

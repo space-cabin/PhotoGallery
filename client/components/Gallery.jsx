@@ -38,10 +38,10 @@ class Gallery extends React.Component {
     return (
       <div className="gallery-view">
         <div className="header">
-          <div className="close-btn" id="close" onClick={this.clickHandler}>
+          <button className="close-btn" id="close" type="submit" onClick={this.clickHandler}>
             <i className="fas fa-times" />
             <p>Close</p>
-          </div>
+          </button>
           <div className="page">
             <p>
               {idx + 1}
@@ -49,31 +49,36 @@ class Gallery extends React.Component {
               {length}
             </p>
           </div>
-          <div className="view-liked" onClick={this.toggleLike}>
-            {liked ? (
-              <div className="view-liked-container">
-                <i className="fas fa-heart" />
-              </div>
-            ) : (
-              <div className="view-liked-container">
-                <i className="far fa-heart" />
-              </div>
-            )}
+          <div className="view-like-share-container">
+            <div className="view-share-container">
+                <i className="fas fa-external-link-alt" />
+            </div>
+            <button className="view-liked" type="submit" onClick={this.toggleLike}>
+              {liked ? (
+                <div className="view-liked-container">
+                  <i className="fas fa-heart" />
+                </div>
+              ) : (
+                <div className="view-liked-container">
+                  <i className="far fa-heart" />
+                </div>
+              )}
+            </button>
           </div>
         </div>
         <div className="photo-booth">
           {idx !== 0 ? (
-            <div className="left-btn" id="left" onClick={this.clickHandler}>
+            <button className="left-btn" id="left" type="submit" onClick={this.clickHandler}>
               <i className="fas fa-chevron-left" />
-            </div>
+            </button>
           ) : null}
           <div className="main-photo-container">
             <img className="main-photo" src={photos[index].url} id={index} alt={photos[index].description} />
           </div>
           {idx !== length - 1 ? (
-            <div className="right-btn" id="right" onClick={this.clickHandler}>
+            <button className="right-btn" id="right" type="submit" onClick={this.clickHandler}>
               <i className="fas fa-chevron-right" />
-            </div>
+            </button>
           ) : null}
         </div>
         <div className="view-description">
