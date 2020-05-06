@@ -184,17 +184,19 @@ img {
   justify-content: space-between;
   margin-right: calc(2% + 19px);
   margin-left: calc(2% + 19px);
-  margin-bottom: 5rem;
+  margin-bottom: 9rem;
 }
 
 .close-btn {
   display: flex;
+  position: relative;
   background-color: rgb(240, 240, 240);
+  border: none;
   border-radius: 8px;
-  height: 2rem;
+  height: 2.2rem;
   align-items: center;
   align-self: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-weight: 300;
   width: 6rem;
   transition: all .25s ease;
@@ -202,13 +204,31 @@ img {
 
 .close-btn:hover {
   cursor: pointer;
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(218, 218, 218);
 }
 
 .close-btn p {
-  margin: 0 0 0 .5rem;
+  margin: 0 0 0 2rem;
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 400;
+  justify-self: center;
+}
+
+.x-1, .x-2 {
+  height: .09rem;
+  width: 1rem;
+  background-color: #000;
+  margin-left: .5rem;
+}
+
+.x-1 {
+  transform: rotate(-45deg);
+  position: fixed;
+}
+
+.x-2 {
+  transform: rotate(45deg);
+  position: fixed;
 }
 
 .close-btn i {
@@ -258,7 +278,7 @@ img {
   justify-content: center;
   margin-right: calc(2% + 19px);
   margin-left: calc(2% + 19px);
-  margin-bottom: 5rem;
+  margin-bottom: 8rem;
 }
 
 .main-photo-container {

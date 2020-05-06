@@ -39,7 +39,8 @@ class Gallery extends React.Component {
       <div className="gallery-view">
         <div className="header">
           <button className="close-btn" id="close" type="submit" onClick={this.clickHandler}>
-            <i className="fas fa-times" />
+            <div className="x-1" />
+            <div className="x-2" />
             <p>Close</p>
           </button>
           <div className="page">
