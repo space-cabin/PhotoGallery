@@ -23,7 +23,7 @@ class App extends React.Component {
 
   componentDidMount() {
     let listingId;
-    if (window.location.pathname === '/') {
+    if (window.location.pathname === '/index.html/') {
       listingId = 0;
     } else {
       listingId = window.location.pathname.slice(1);
@@ -128,9 +128,7 @@ class App extends React.Component {
     if (photos.length > 0 && galleryView) {
       return (
         <div className="gallery-view-container">
-          <Gallery index={index} photos={photos} liked={liked} viewClickHandler={this.viewClickHandler} toggleLike={this.toggleLike}>
-
-          </Gallery>
+          <Gallery index={index} photos={photos} liked={liked} viewClickHandler={this.viewClickHandler} toggleLike={this.toggleLike} />
         </div>
       );
     }

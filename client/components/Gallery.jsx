@@ -34,7 +34,7 @@ class Gallery extends React.Component {
   render() {
     const { index, photos, liked } = this.props;
     const idx = Number(index);
-    const length = photos.length;
+    const { length } = photos;
     return (
       <div className="gallery-view">
         <div className="header">
@@ -52,7 +52,7 @@ class Gallery extends React.Component {
           </div>
           <div className="view-like-share-container">
             <div className="view-share-container">
-                <i className="fas fa-external-link-alt" />
+              <i className="fas fa-external-link-alt" />
             </div>
             <button className="view-liked" type="submit" onClick={this.toggleLike}>
               {liked ? (
