@@ -15,8 +15,6 @@ app.get('/', (req, res) => {
   res.redirect(301, 'http://localhost:3000/index.html');
 });
 
-app.use(express.static(path.join(__dirname, '..', 'public')));
-
 app.get('/list/:listing_id', (req, res) => {
   const id = req.params.listing_id;
   Photo.getAllPhotos(id, (err, results) => {
