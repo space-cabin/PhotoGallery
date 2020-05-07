@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+const path = require('path');
 const fs = require('fs');
 const db = require('../database/index.js');
 const Photo = require('../database/Model/Photo.js');
@@ -7,8 +8,14 @@ const Photo = require('../database/Model/Photo.js');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use('/:listing_id', express.static('public'));
+app.use('/:id', express.static(path.join(__dirname, '..', 'public')));
 app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.redirect(301, 'http://localhost:3000/index.html');
+});
+
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.get('/list/:listing_id', (req, res) => {
   const id = req.params.listing_id;
@@ -20,6 +27,7 @@ app.get('/list/:listing_id', (req, res) => {
     }
   });
 });
+
 
 app.listen(PORT, () => {
   console.log(`Server listening at ${PORT}...`);

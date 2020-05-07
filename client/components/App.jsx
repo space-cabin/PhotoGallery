@@ -23,7 +23,7 @@ class App extends React.Component {
 
   componentDidMount() {
     let listingId;
-    if (window.location.pathname === '/') {
+    if (window.location.pathname === '/index.html/') {
       listingId = 0;
     } else {
       listingId = window.location.pathname.slice(1);
