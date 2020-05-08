@@ -3,11 +3,17 @@ orbs:
   node: circleci/node@1.1.6
 jobs:
   build:
+    working_directory: ~/mern-starter
+    docker:
+      - image: circleci/node:10.16.3
+      - image: mongo:4.2.0
     executor:
       name: node/default
       tag: '10.4'
   steps:
     - checkout
+    - restore_cache:
+      key: dependency-cache-{{ checksum "package-lock.json" }}
     - node/with-cache:
       steps:
         - run: npm install
