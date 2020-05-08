@@ -46,7 +46,7 @@ class App extends React.Component {
   handleClick(target) {
     this.setState({
       galleryView: true,
-      index: target,
+      index: Number(target),
     });
   }
 
@@ -83,17 +83,10 @@ class App extends React.Component {
               <p>Share</p>
             </div>
             <div className="liked" id="like-btn" onClick={this.toggleLike}>
-              {liked ? (
-                <div className="liked-container">
-                  <i className="fas fa-heart" />
-                  <p>Save</p>
-                </div>
-              ) : (
-                <div className="liked-container">
-                  <i className="far fa-heart" />
-                  <p>Save</p>
-                </div>
-              )}
+              <div className="liked-container">
+                {liked ? <i className="fas fa-heart" /> : <i className="far fa-heart" />}
+                <p>Save</p>
+              </div>
             </div>
           </div>
           <div className="gallery">

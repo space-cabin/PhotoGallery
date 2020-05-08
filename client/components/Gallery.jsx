@@ -13,8 +13,7 @@ class Gallery extends React.Component {
   }
 
   clickHandler({ target }) {
-    const index = Number(document.querySelector('.main-photo').id);
-    const { viewClickHandler } = this.props;
+    const { index, viewClickHandler } = this.props;
     if (target.id === 'right') {
       viewClickHandler(index + 1);
     }
@@ -44,11 +43,9 @@ class Gallery extends React.Component {
             <p>Close</p>
           </button>
           <div className="page">
-            <p>
-              {idx + 1}
-              /
-              {length}
-            </p>
+            <p className="page-current">{idx + 1}</p>
+            <p className="page-border">/</p>
+            <p className="page-total">{length}</p>
           </div>
           <div className="view-like-share-container">
             <div className="view-share-container">
