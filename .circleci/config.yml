@@ -2,12 +2,25 @@ version: 2.1
 jobs:
   build:
     docker: 
-      - image: circleci/node:4.8.2
+      - image: circleci/node:10.16.3
+      - image: mongo:4.2.0
     steps:
       - checkout
-      - run: echo "installing dependencies"
-      - run: npm install
-      - run: echo "running test"
-      - run: npm run test
-      
-
+     - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@5'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: install-npm-wee
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: test
+          command: npm test
+      - run:
+          name: code-coverage
+          command: './node_modules/.bin/nyc report --reporter=text-lcov'
