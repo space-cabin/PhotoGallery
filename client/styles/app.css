@@ -231,6 +231,7 @@ body {
 .page {
   display: flex;
   width: 2rem;
+  margin-top: 2rem;
   font-weight: 300;
   letter-spacing: .3rem;
   justify-content: center;
@@ -267,7 +268,7 @@ body {
 
 .photo-booth {
   display: flex;
-  flex: 1 4 65%;
+  flex: 1 0 65%;
   order: 1;
   justify-content: space-between;
   align-items: center;
