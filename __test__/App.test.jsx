@@ -27,7 +27,6 @@ describe('<App />', () => {
     wrapper.setState({
       photos: [{}, {}, {}, {}, {}],
       galleryView: false,
-
     });
     expect(wrapper.find(Photo)).toHaveLength(5);
   });
@@ -113,24 +112,25 @@ describe('<Gallery />', () => {
     wrapper = mount(<App />);
   });
 
-  it('should hide "left" button when the first photo is displayed', () => {
+  it('should render the last image when "left" button is clicked and the first photo was displayed', () => {
     wrapper.setState({
       photos,
       galleryView: true,
       index: 0,
     });
-    expect(wrapper.find('#left')).toHaveLength(0);
-    expect(wrapper.find('#right')).toHaveLength(1);
+    wrapper.find('#left').simulate('click');
+    expect(wrapper.state('index')).toBe(photos.length - 1);
+
   });
 
-  it('should hide "right" button when the last photo is displayed', () => {
+  it('should render the first image when "right" button is clicked and the last photo was displayed', () => {
     wrapper.setState({
-      photos: [{}, {}, {}, {}, {}],
+      photos,
       galleryView: true,
-      index: 4,
+      index: photos.length - 1,
     });
-    expect(wrapper.find('#left')).toHaveLength(1);
-    expect(wrapper.find('#right')).toHaveLength(0);
+    wrapper.find('#right').simulate('click');
+    expect(wrapper.state('index')).toBe(0);
   });
 
   it('should display both "left" and "right" buttons when photo is displayed', () => {
@@ -140,6 +140,7 @@ describe('<Gallery />', () => {
       index: 4,
     });
     expect(wrapper.find('#left')).toHaveLength(1);
+    wrapper.find('#right').simulate('click');
     expect(wrapper.find('#right')).toHaveLength(1);
   });
 
@@ -171,17 +172,5 @@ describe('<Gallery />', () => {
     });
     wrapper.find('#left').simulate('click');
     expect(wrapper.state('index')).toBe(2);
-  });
-
-  it('should toggle liked state when "Like" button is clicked in the gallery view', () => {
-    wrapper.setState({
-      photos,
-      galleryView: true,
-      liked: false,
-    });
-    wrapper.find('.view-liked').simulate('click');
-    expect(wrapper.state('liked')).toBe(true);
-    wrapper.find('.view-liked').simulate('click');
-    expect(wrapper.state('liked')).toBe(false);
   });
 });
