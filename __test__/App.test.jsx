@@ -8,22 +8,20 @@ import Gallery from '../client/components/Gallery';
 import { photos } from './mock';
 
 describe('<App />', () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(<App />);
-  });
-
   it('should render the app component', () => {
+    const wrapper = shallow(<App />);
     expect(wrapper).toExist();
   });
 
   // Before componentDidMount
   it('should render one <div class="gallery" /> element before componentDidMount', () => {
+    const wrapper = shallow(<App />);
     expect(wrapper.find('.gallery')).toHaveLength(1);
   });
 
   // When !galleryView
   it('should render five <Photo /> elements on componentDidMount', () => {
+    const wrapper = shallow(<App />);
     wrapper.setState({
       photos: [{}, {}, {}, {}, {}],
       galleryView: false,
@@ -33,6 +31,7 @@ describe('<App />', () => {
 
   // When !galleryView
   it('should render five <Photo /> elements on componentDidMount when there are more than five photo objects', () => {
+    const wrapper = shallow(<App />);
     wrapper.setState({
       photos,
       galleryView: false,
@@ -43,6 +42,7 @@ describe('<App />', () => {
 
   // When galleryView
   it('should render one <Gallery /> element on componentDidMount', () => {
+    const wrapper = shallow(<App />);
     wrapper.setState({
       photos,
       galleryView: true,
@@ -52,7 +52,7 @@ describe('<App />', () => {
 
   // When a photo is clicked
   it('should return galleryView: true when a photo is clicked', () => {
-    wrapper = mount(<App />);
+    const wrapper = mount(<App />);
     wrapper.setState({
       photos,
       galleryView: false,
@@ -66,7 +66,7 @@ describe('<App />', () => {
   });
 
   it('should return the index of the clicked photo when a photo is clicked', () => {
-    wrapper = mount(<App />);
+    const wrapper = mount(<App />);
     wrapper.setState({
       photos,
       galleryView: false,
@@ -79,6 +79,7 @@ describe('<App />', () => {
 
   // When 'Show all photos' is clicked
   it('should return index: 0 when "Show all photos" button is clicked', () => {
+    const wrapper = shallow(<App />);
     wrapper.setState({
       photos,
       galleryView: false,
@@ -93,16 +94,17 @@ describe('<App />', () => {
 
   // When 'Like' is clicked
   it('should toggle liked state when "Like" button is clicked', () => {
+    const wrapper = shallow(<App />);
     wrapper.setState({
       photos,
       galleryView: false,
       liked: false,
     });
-    expect(wrapper.state('liked')).toBe(false);
+    const mockChangeHandler = jest.fn();
+    wrapper.instance().toggleLike = mockChangeHandler;
+    wrapper.instance().forceUpdate();
     wrapper.find('#like-btn').simulate('click');
-    expect(wrapper.state('liked')).toBe(true);
-    wrapper.find('#like-btn').simulate('click');
-    expect(wrapper.state('liked')).toBe(false);
+    expect(mockChangeHandler).toHaveBeenCalled();
   });
 });
 

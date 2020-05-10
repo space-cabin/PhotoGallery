@@ -24,7 +24,19 @@ const getAllPhotos = (id, callback) => {
   });
 };
 
+const updateLikeStatus = (_id, liked, callback) => {
+  Photo.findByIdAndUpdate(_id, { liked }, (err) => {
+    if(err) {
+      callback(err);
+    } else {
+      console.log('updated');
+      callback(null);
+    }
+  });
+};
+
 module.exports = {
   Photo,
   getAllPhotos,
+  updateLikeStatus,
 };

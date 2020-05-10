@@ -9,6 +9,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
+      _id: null,
       liked: false,
       photos: [],
       galleryView: false,
@@ -30,9 +31,10 @@ class App extends React.Component {
       listingId = listingId.slice(0, listingId.length - 1);
     }
     if (Number(listingId) !== 'NaN') {
-      axios.get(`/list/${listingId}`)
+      axios.get(`/main/${listingId}`)
         .then(({ data }) => {
           this.setState({
+            _id: data[0]._id,
             liked: data[0].liked,
             photos: data[0].photos,
           });
@@ -66,8 +68,21 @@ class App extends React.Component {
   }
 
   toggleLike() {
-    const { liked } = this.state;
-    this.setState({ liked: !liked });
+    const { liked, _id } = this.state;
+    axios({
+      method: 'patch',
+      url: '/update',
+      data: {
+        id: _id,
+        liked: !liked,
+      },
+    })
+      .then(() => {
+        this.setState({ liked: !liked });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   render() {

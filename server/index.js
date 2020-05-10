@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
   res.redirect(301, 'http://localhost:3000/index.html');
 });
 
-app.get('/list/:listing_id', (req, res) => {
+app.get('/main/:listing_id', (req, res) => {
   const id = req.params.listing_id;
   Photo.getAllPhotos(id, (err, results) => {
     if (err) {
@@ -26,6 +26,16 @@ app.get('/list/:listing_id', (req, res) => {
   });
 });
 
+app.patch('/update', (req, res) => {
+  let { liked, id } = req.body;
+  Photo.updateLikeStatus(id, liked, (err) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.sendStatus(201);
+    }
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening at ${PORT}...`);
