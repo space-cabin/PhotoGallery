@@ -27,7 +27,6 @@ describe('<App />', () => {
     wrapper.setState({
       photos: [{}, {}, {}, {}, {}],
       galleryView: false,
-
     });
     expect(wrapper.find(Photo)).toHaveLength(5);
   });

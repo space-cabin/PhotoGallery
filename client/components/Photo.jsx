@@ -21,7 +21,9 @@ class Photo extends React.Component {
       backgroundImage: `url(${photo.url})`,
     };
     return (
-      <div className={className} style={style} id={index} onClick={this.handleClick} />
+      <div className="photo-container">
+        <div className={className} style={style} id={index} onClick={this.handleClick} />
+      </div>
     );
   }
 }
