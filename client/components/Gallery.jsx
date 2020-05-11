@@ -1,12 +1,11 @@
 import React from 'react';
+import Carousel from './Carousel';
 
 class Gallery extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-
-    };
+    this.state = {};
 
     this.clickHandler = this.clickHandler.bind(this);
     this.toggleLike = this.toggleLike.bind(this);
@@ -39,19 +38,20 @@ class Gallery extends React.Component {
   }
 
   render() {
-    const { index, photos, liked } = this.props;
+    const { index, photos } = this.props;
+    const carousel = photos.slice(index - 2 >= 0 ? index - 2 : index, index - 2 < 0 ? index + 5 : (index + 3 || photos.length));
     const idx = Number(index);
     const { length } = photos;
     return (
       <div className="gallery-view">
+        <button className="close-btn" id="close" type="submit" onClick={this.clickHandler}>
+          <div className="x-1" />
+          <div className="x-2" />
+        </button>
         <div className="header">
-          <button className="close-btn" id="close" type="submit" onClick={this.clickHandler}>
-            <div className="x-1" />
-            <div className="x-2" />
-          </button>
           <div className="mini-gallery">
             <div className="mini-carousel">
-
+              {carousel.map((photo) => <Carousel photo={photo} index={index} />)}
             </div>
           </div>
           <div className="page">
