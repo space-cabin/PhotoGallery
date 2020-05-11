@@ -39,9 +39,14 @@ class Gallery extends React.Component {
 
   render() {
     const { index, photos } = this.props;
-    const carousel = photos.slice(index - 2 >= 0 ? index - 2 : index, index - 2 < 0 ? index + 5 : (index + 3 || photos.length));
-    const idx = Number(index);
     const { length } = photos;
+    let carousel;
+    if (index >= length - 2) {
+      carousel = photos.slice(length - 5, length);
+    } else {
+      carousel = photos.slice(index - 2 < 0 ? 0 : index - 2, index - 2 < 0 ? 5 : (index + 3 || length));
+    }
+    const idx = Number(index);
     return (
       <div className="gallery-view">
         <button className="close-btn" id="close" type="submit" onClick={this.clickHandler}>
@@ -51,7 +56,7 @@ class Gallery extends React.Component {
         <div className="header">
           <div className="mini-gallery">
             <div className="mini-carousel">
-              {carousel.map((photo) => <Carousel photo={photo} index={index} />)}
+              {carousel.map((photo) => <Carousel photo={photo} index={index} key={photo._id} />)}
             </div>
           </div>
           <div className="page">

@@ -115,10 +115,12 @@ class App extends React.Component {
                 <div className="right-half">
                   <div className="second-column">
                     <Photo className="photo photo-1" index="1" photo={photos[1]} handleClick={this.handleClick} />
+                    <div className="border" />
                     <Photo className="photo photo-2" index="2" photo={photos[2]} handleClick={this.handleClick} />
                   </div>
                   <div className="third-column">
                     <Photo className="photo photo-3" index="3" photo={photos[3]} handleClick={this.handleClick} />
+                    <div className="border" />
                     <Photo className="photo photo-4" index="4" photo={photos[4]} handleClick={this.handleClick} />
                     <div className="btn-container">
                       <button type="submit" className="show-all" id="all-photos" onClick={this.showAllPhotos}>
