@@ -12,7 +12,7 @@ app.use('/:id', express.static(path.join(__dirname, '..', 'public')));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.redirect(301, 'http://localhost:3000/index.html');
+  res.redirect(301, `http://localhost:${PORT}/index.html`);
 });
 
 app.get('/main/:listing_id', (req, res) => {
