@@ -6,7 +6,7 @@ const db = require('../database/index.js');
 const Photo = require('../database/Model/Photo.js');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3005;
 
 app.use('/:id', express.static(path.join(__dirname, '..', 'public')));
 app.use(express.json());
