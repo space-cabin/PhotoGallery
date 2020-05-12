@@ -122,11 +122,9 @@ class App extends React.Component {
                     <Photo className="photo photo-3" index="3" photo={photos[3]} handleClick={this.handleClick} />
                     <div className="border" />
                     <Photo className="photo photo-4" index="4" photo={photos[4]} handleClick={this.handleClick} />
-                    <div className="btn-container">
-                      <button type="submit" className="show-all" id="all-photos" onClick={this.showAllPhotos}>
-                        View Photos
-                      </button>
-                    </div>
+                    <button type="submit" className="show-all" id="all-photos" onClick={this.showAllPhotos}>
+                      View Photos
+                    </button>
                   </div>
                 </div>
               </div>
