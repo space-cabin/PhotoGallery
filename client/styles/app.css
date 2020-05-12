@@ -109,19 +109,8 @@ body {
   transform: scale(1.1);
 }
 
-/* .btn-container {
-  position: fixed;
-  display: flex;
-  flex-flow: column;
-  min-height: 19rem;
-  height: 53vh;
-  align-self: flex-end;
-  margin-left: -1.8rem;
-  justify-content: flex-end;
-} */
-
 .show-all {
-  position: fixed;
+  position: absolute;
   display: inline;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   height: 2.3rem;
@@ -149,7 +138,7 @@ body {
   justify-content: flex-end;
   padding-top: 5rem;
   margin-bottom: 1rem;
-  position: fixed;
+  position: absolute;
   background: transparent;
   z-index: 10;
 }
