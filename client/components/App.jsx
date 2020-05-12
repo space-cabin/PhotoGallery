@@ -31,7 +31,7 @@ class App extends React.Component {
       listingId = listingId.slice(0, listingId.length - 1);
     }
     if (Number(listingId) !== 'NaN') {
-      axios.get(`/main/${listingId}`)
+      axios.get(`/photos/${listingId}`)
         .then(({ data }) => {
           this.setState({
             _id: data[0]._id,

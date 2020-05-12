@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
   res.redirect(301, `http://localhost:${PORT}/index.html`);
 });
 
-app.get('/main/:listing_id', (req, res) => {
+app.get('/photos/:listing_id', (req, res) => {
   const id = req.params.listing_id;
   Photo.getAllPhotos(id, (err, results) => {
     if (err) {
