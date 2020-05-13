@@ -171,8 +171,12 @@ body {
 
 .gallery-view-container {
   display: flex;
+  position: absolute;
+  background-color: #fff;
   justify-content: center;
   height: 100%;
+  width: 100%;
+  z-index: 5;
 }
 
 .gallery-view {
@@ -180,6 +184,7 @@ body {
   height: 100%;
   width: 100%;
   justify-content: space-between;
+
 }
 
 .header {
@@ -193,7 +198,7 @@ body {
 
 .close-btn {
   display: block;
-  position: fixed;
+  position: absolute;
   border: none;
   background-color: #fff;
   height: 2.2rem;
