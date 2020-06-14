@@ -13,10 +13,12 @@ Open source room reservation - Photo gallery module
 
 ### Installation
 
-Once you clone this repo,
+Once you clone this repo and from within the root directory:
 
 ```sh
 $ npm install
 
 $ npm run seed
+
+$ npm start
 ```
