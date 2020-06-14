@@ -1,5 +1,12 @@
 # PhotoGallery
 
+### Related Projects
+| Name | Link |
+| ------ | ------ |
+| Reservations | https://github.com/space-cabin/Evan-Service-Reservations |
+| Description | https://github.com/space-cabin/room-description-service |
+| Reviews | https://github.com/space-cabin/reviews |
+
 ### Description
 Open source room reservation - Photo gallery module
 
